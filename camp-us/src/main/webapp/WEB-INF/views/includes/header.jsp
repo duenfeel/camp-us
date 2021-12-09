@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- jstl core 쓸때 태그에 c 로 표시. -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,22 +38,59 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                  <li>
-                    <a href="/resources/cart.html" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>
-              </div> 
-            </div>
+                
+                
+                <!-- 마이페이지 드롭박스 -->
+                  <aside class="site-navigation text-right text-md-center"
+										role="navigation">
+										<div class="container">
+											<ul class="site-menu js-clone-nav d-none d-md-block has-children">
+												<li class="has-children active"><span
+													class="icon icon-person"></span>
+													<ul class="dropdown">
+														<li><a href="#">Edit Profile</a></li>
+														<li><a href="#">My Shopping</a></li>
+														<li><a href="#">My Community</a></li><!-- 
+														<li class=""><a href=""></a>
+															<ul class="">
+																<li><a href=""></a></li>
+																<li><a href=""></a></li>
+																<li><a href=""></a></li>
+															</ul></li> -->
+													</ul></li>
+												<li><a href="#"><span class="icon icon-heart-o"></span></a>
+													<a href="#"><span class="icon icon-shopping_cart"></span></a>
+												</li>
+											</ul>
+										</div>
+									</aside>
+									
+									<!-- <li class="has-children"><a href="/resources/about.html">BACKPACKING</a>
+							<ul class="dropdown">
+								<li><a href="#">Menu One</a></li>
+								<li><a href="#">Menu Two</a></li>
+								<li><a href="#">Menu Three</a></li>
+							</ul></li> -->
 
-          </div>
-        </div>
-      </div> 
+
+
+									<li><a href="/resources/cart.html" class="site-cart">
+											<!-- 
+                      <span class="icon icon-shopping_cart"></span>
+                      <span class="count">2</span> -->
+									</a></li>
+									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
+										class="site-menu-toggle js-menu-toggle"><span
+											class="icon-menu"></span></a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- 마이페이지 드롭박스 -->
+			
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">

@@ -35,7 +35,6 @@ public class HomeController {
 		
 		return "home";
 		
-		@GetMapping("/")
 	}
 	
 }

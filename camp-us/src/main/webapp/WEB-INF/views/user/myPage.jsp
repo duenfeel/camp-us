@@ -4,7 +4,14 @@
 <!-- jstl core 쓸때 태그에 c 로 표시. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- jstl fmt 쓸때 위와 같음. fmt : formatter 형식 맞춰서 표시 -->
-<%@ include file="includes/header.jsp"%>
+<%@ include file="../includes/header.jsp"%>
+
+
+<!-- my page 전체 수정 예정 기존 home.jsp 에 드롭박스로 추가 예정-->
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +23,7 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="/resources/fonts/icomoon/style.css">
 
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/magnific-popup.css">
@@ -113,4 +120,4 @@
 </html>
 
 <!-- 아래 아이콘 3개 나오지 않음 수정해야함. -->
-<%@ include file="includes/footer.jsp"%>
+<%@ include file="../includes/footer.jsp"%>
