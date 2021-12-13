@@ -11,6 +11,18 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+	<!-- TRACE > DEBUG > INFO > WARN > ERROR > FATAL -->
+	<logger name="jdbc.audit">
+		<level value="fatal" />
+	</logger>
+
+	<logger name="jdbc.resultset">
+		<level value="warn" />
+	</logger>
+
+	<logger name="jdbc.connection">
+		<level value="warn" />
+	</logger>
 	<logger name="kr.campus.controller">
 		<level value="info" />
 	</logger>

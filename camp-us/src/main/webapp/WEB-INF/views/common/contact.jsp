@@ -4,105 +4,33 @@
 <!-- jstl core 쓸때 태그에 c 로 표시. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- jstl fmt 쓸때 위와 같음. fmt : formatter 형식 맞춰서 표시 -->
-<%@ include file="includes/header.jsp"%>
-
+<%@ include file="../includes/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+<title>Campus</title>
+<meta charset="utf-8">
+<meta name="viewport"
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet"
+   href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+<link rel="stylesheet" href="/resources/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/magnific-popup.css">
-    <link rel="stylesheet" href="/resources/css/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
 
 
-    <link rel="stylesheet" href="/resources/css/aos.css">
+<link rel="stylesheet" href="/resources/css/aos.css">
 
-    <link rel="stylesheet" href="/resources/css/style.css">
-    
-  </head>
+<link rel="stylesheet" href="/resources/css/style.css">
+
+</head>
   <body>
-  
-  <div class="site-wrap">
-   <!--  <header class="site-navbar" role="banner">
-      <div class="site-navbar-top">
-        <div class="container">
-          <div class="row align-items-center">
 
-            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
-              </form>
-            </div>
-
-            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-              <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-              <div class="site-top-icons">
-                <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                  <li>
-                    <a href="cart.html" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>
-              </div> 
-            </div>
-
-          </div>
-        </div>
-      </div>  -->
-      <nav class="site-navigation text-right text-md-center" role="navigation">
-        <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="has-children">
-              <a href="about.html">About</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li class="active"><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
 
     <div class="bg-light py-3">
       <div class="container">
@@ -125,12 +53,8 @@
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                    <label for="c_fname" class="text-black">Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="c_fname" name="c_fname">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -267,4 +191,4 @@
 </html>
 
 
-<%@ include file="includes/footer.jsp"%>
+<%@ include file="../includes/footer.jsp"%>

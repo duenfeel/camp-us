@@ -4,8 +4,6 @@
 <!-- jstl core 쓸때 태그에 c 로 표시. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- jstl fmt 쓸때 위와 같음. fmt : formatter 형식 맞춰서 표시 -->
-<%@ include file="../includes/header.jsp"%>
-
 
 <!-- my page 전체 수정 예정 기존 home.jsp 에 드롭박스로 추가 예정-->
 
@@ -39,70 +37,55 @@
 </head>
 <body>
 
-	<div class="bg-light py-3">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-0">
-					<a href="index.html">My Page</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="site-section block-8">
+	<div class="site-section block-8" >
 		<div class="container">
 			<div class="row justify-content-center  mb-5">
 				<div class="col-md-7 site-section-heading text-center pt-4">
-					<h2>My Page</h2>
+					<h2>회원정보 변경</h2>
+					<br> <br> <input type="text" class="form-control py-4"
+						id="myProfile_ID_subscribe" placeholder="아이디">
+						<input type="password" class="form-control py-4"
+						id="myProfile_PW_subscribe" placeholder="비밀번호">
+						<input type="password" class="form-control py-4"
+						id="myProfile_REPW_subscribe" placeholder="비밀번호확인">
+						<input type="text" class="form-control py-4"
+						id="myProfile_Email_subscribe" placeholder="이메일">
+						<input type="text" class="form-control py-4"
+						id="myProfile_NicName_subscribe" placeholder="닉네임">
+						<input type="text" class="form-control py-4"
+						id="myProfile_address_subscribe" placeholder="주소지">
+					<p>
+					<p>
+					<p>
+					<p>
+					<br>
+						<input type="submit" class="btn btn-sm btn-primary form-control"
+							value="변경완료">
+
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- style.css 에 스타일 추가했음
+	  /* 이미지 둥글게 */
+  .box {
+    width: 60px;
+    height: 60px; 
+    border-radius: 70%;
+    overflow: hidden;
+}
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  /* 이미지 둥글게 */
+  
+  
+   -->
 
-	<!-- 프로필 부분 -->
-	<!-- <div class="site-section block-3 site-blocks-2 bg-light">
-		<div class="box" style="background: #BDBDBD;">
-			<div>			
-				<img class="profile" src="/resources/images/My Page.png">				
-				</div>				
-			</div>			
-			<div class="font">닉네임</div>						
-		</div> -->
-	<!-- 프로필 부분 -->
 
-<!-- 프로필 부분 --><!-- 프로필 이미지 크기 조절필요함. -->
-
-	<table width="1300" height="100" align="center">
-		<tr>
-			<td rowspan="1" align="center">
-				<div>
-					<img class="profile" src="/resources/images/My Page.png">
-				</div>
-			</td>
-
-			<td>
-				<div class="wrap">
-					<a href="#" class="button"> Edit Profile</a>
-				</div>
-			</td>
-
-			<td rowspan="1" align="center">
-				<div class="wrap">
-					<a href="#" class="button">SHOPPING</a>
-				</div>
-			</td>
-			<td rowspan="1" align="center">
-				<div class="wrap">
-					<a href="#" class="button">COMMUNITY</a>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td align="center"><font size="25">닉네임</font></td>
-		</tr>
-
-	</table>
-	<!-- 프로필 부분 -->
 
 
 
@@ -119,5 +102,3 @@
 </body>
 </html>
 
-<!-- 아래 아이콘 3개 나오지 않음 수정해야함. -->
-<%@ include file="../includes/footer.jsp"%>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.campus.mapper.CommunityBoardMapper">
+	<select id="getList" resultType="kr.campus.domain.CommunityBoardVO">
+	<![CDATA[ 	
+	select *from tbl_community_board where bno > 0
+	]]>
+	</select>
+	
+	<insert id="insert">
+		insert into tbl_community_board(bno, category, title, writernickname, writerid, content)
+		values (seq_community_board.nextval, #{category}, #{title}, #{writerNickname}, #{writerID}, #{content})
+	</insert>
+	
+	<select id="read" resultType="kr.campus.domain.CommunityBoardVO">
+		select * from tbl_community_board where bno = #{bno}
+	</select>
+	
+	<delete id="delete">
+		delete tbl_community_board where bno = #{bno}
+	</delete>
+	
+	<update id="update">
+		update tbl_community_board 
+		set category = #{category}, 
+		title = #{title},
+		content = #{content},
+		writernickname = #{writerNickname},
+		writerid = #{writerID}
+		where bno = #{bno}
+	</update>
+	
+</mapper>

@@ -14,7 +14,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="campus"></property>
-		<property name="password" value="camf"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -28,5 +28,6 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="kr.campus.mapper"/>
+	<context:component-scan base-package="kr.campus.service"/>
 
 </beans>
