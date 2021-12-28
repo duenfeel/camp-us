@@ -3,8 +3,11 @@ package kr.campus.domain;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CommunityBoardVO {
 	private Long bno;
 	private String category;

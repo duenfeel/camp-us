@@ -6,7 +6,9 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+		/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -23,11 +25,55 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 첨부파일 설정 값 -->
+			<multipart-config>
+			<location>c:\\upload\\temp</location>
+			<max-file-size>20971520</max-file-size>
+			<!--byte 기본 단위 1024 1024 1개파일의 최대 업로드 용량은 20MB -->
+			<max-request-size>41943040</max-request-size>
+			<!-- 동시에 업로드 하는 파일들의 총 크기 -->
+			<file-size-threshold>20971520</file-size-threshold>
+			<!-- 스트림으로 처리할 수 있는 최대 크기 초과하면 임시파일로 저장후 업로드 -->
+		</multipart-config>
 	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<!-- 한글 필터 시작 -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 한글 필터 끝 -->
+<!--  security start -->
+<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
 
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain
+		</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+<!--  security end  -->	
 </web-app>

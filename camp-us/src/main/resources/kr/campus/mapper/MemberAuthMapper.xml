@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.campus.mapper.MemberAuthMapper">
+	<insert id="add">
+		INSERT INTO
+		CAMPUS_MEMBERAuth(
+		userid,
+		Auth
+		)
+		values(
+		#{userId},
+		#{auth}
+		)
+	</insert>
+	
+	<delete id="delete">
+		delete CAMPUS_MEMBERAuth Where userid=#{userId}
+	</delete>
+
+</mapper>

@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<title>CAMP-US</title>
 <meta charset="utf-8">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,14 +34,14 @@
 
 </head>
 <body>
-	    <input type="hidden" id="cnt" name="cnt" value="1000">
+       <input type="hidden" id="cnt" name="cnt" value="1000">
    <!-- 화면에는 보이지는 않음(내부에만 보이는것) 데이터베이스를 가져와서 총 건수를 알아올때 -->
 
 <div class="container">
       <br><br><br>
          <h3>
             SHOP 검색결과&emsp;
-         <input type="submit" class="btn btn-sm btn-primary " value="더보기">
+         <input type="button" class="btn btn-sm btn-primary" id="shopResult" value="더보기">
          </h3>     
       
       <div class="row mb-5">
@@ -122,75 +122,89 @@
               </div>
               
               <input type="hidden" id="cnt" name="cnt" value="1000">
-	<!-- 화면에는 보이지는 않음(내부에만 보이는것) 데이터베이스를 가져와서 총 건수를 알아올때 -->
+   <!-- 화면에는 보이지는 않음(내부에만 보이는것) 데이터베이스를 가져와서 총 건수를 알아올때 -->
 
 
-	<br>
-	<br>
-	<br>
-	<br>
+   <br>
+   <br>
+   <br>
+   <br>
 
 
       <h3>COMMUNITY 검색결과
-         <input type="submit" class="btn btn-sm btn-primary " value="더보기">
+         <input type="button" class="btn btn-sm btn-primary" id="communityResult" value="더보기">
       </h3>
       <!-- 레코드의 갯수를 출력 -->
       
       <div class="container">
-		<br> <br> <br> <span>
-			<h3>
-				전체 게시글
-			</h3>
-		</span>
+      <br> <br> <br> <span>
+         <h3>
+            전체 게시글
+         </h3>
+      </span>
 
-		<!-- <h3>
-			전체 게시글 <input type="submit" style=" value="글쓰기">
-		</h3> -->
-		<!-- 레코드의 갯수를 출력 -->
-		<table width="1200px">
-			<thead>
-				<tr>
-					<th>카테고리</th>
-					<th>제목&emsp;&emsp;&emsp;&emsp;&emsp;</th>
-					<th>작성자&emsp;&emsp;</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="board" items="${list}">
-					<tr>
-						<td>내용</td>
-						<td>내용</td>
-						<td>내용</td>
-						<td>내용</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+      <!-- <h3>
+         전체 게시글 <input type="submit" style=" value="글쓰기">
+      </h3> -->
+      <!-- 레코드의 갯수를 출력 -->
+      <table width="1200px">
+         <thead>
+            <tr>
+               <th>카테고리</th>
+               <th>제목&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+               <th>작성자&emsp;&emsp;</th>
+               <th>작성일</th>
+            </tr>
+         </thead>
+         <tbody>
+            <c:forEach var="board" items="${list}">
+               <tr>
+                  <td>내용</td>
+                  <td>내용</td>
+                  <td>내용</td>
+                  <td>내용</td>
+               </tr>
+            </c:forEach>
+         </tbody>
+      </table>
+   </div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
           
       
 </div>
 <br><br><br><br><br><br>
 
-	<script src="/resources/js/jquery-3.3.1.min.js"></script>
-	<script src="/resources/js/jquery-ui.js"></script>
-	<script src="/resources/js/popper.min.js"></script>
-	<script src="/resources/js/bootstrap.min.js"></script>
-	<script src="/resources/js/owl.carousel.min.js"></script>
-	<script src="/resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="/resources/js/aos.js"></script>
-	<script src="/resources/js/main.js"></script>
+   <script src="/resources/js/jquery-3.3.1.min.js"></script>
+   <script src="/resources/js/jquery-ui.js"></script>
+   <script src="/resources/js/popper.min.js"></script>
+   <script src="/resources/js/bootstrap.min.js"></script>
+   <script src="/resources/js/owl.carousel.min.js"></script>
+   <script src="/resources/js/jquery.magnific-popup.min.js"></script>
+   <script src="/resources/js/aos.js"></script>
+   <script src="/resources/js/main.js"></script>
 
 
 </body>
+<script>
+$(document).ready(function() {
+   $("#shopResult").on("click", function(e) {
+      console.log("go searchResult page with #shop");
+      self.location = "/common/searchResult";
+   });
+   
+   $("#communityResult").on("click", function(e) {
+      console.log("go searchResult page with #community");
+      self.location = "/common/searchResult";
+   });
+});
+</script>
+
 </html>
 <%@ include file="../includes/footer.jsp"%>

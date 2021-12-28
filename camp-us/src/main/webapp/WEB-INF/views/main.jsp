@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- jstl core 쓸때 태그에 c 로 표시. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- jstl fmt 쓸때 위와 같음. fmt : formatter 형식 맞춰서 표시 -->
-<%@ include file="../includes/header.jsp"%>
+<%@ include file="includes/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<title>CAMPUS</title>
 <meta charset="utf-8">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,7 +60,7 @@
                </div>
                <div class="text">
                   <h2 class="text-uppercase">Free Shipping</h2>
-                  <p>무료 배송 부분.</p>
+                  <p>캠퍼스는 전품목 무료배송입니다.</p>
                </div>
             </div>
             <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4"
@@ -70,7 +70,7 @@
                </div>
                <div class="text">
                   <h2 class="text-uppercase">RENTAL SERVICE</h2>
-                  <p>대여 부분</p>
+                  <p>중장비 대여 서비스를 운영합니다.</p>
                </div>
             </div>
             <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4"
@@ -80,7 +80,7 @@
                </div>
                <div class="text">
                   <h2 class="text-uppercase">TRAVELER COMMUNITY</h2>
-                  <p>커뮤니티 부분</p>
+                  <p>커뮤니티에서 캠핑 정보를 공유해보세요.</p>
                </div>
             </div>
          </div>
@@ -246,7 +246,7 @@
                   Quisquam iste dolor accusantium facere corporis ipsum animi
                   deleniti fugiat. Ex, veniam?</p>
                <p>
-                  <a href="#" class="btn btn-primary btn-sm">Shop Now</a>
+                  <a href="/shop/itemList" class="btn btn-primary btn-sm">Shop Now</a>
                </p>
             </div>
          </div>
@@ -262,19 +262,20 @@
    <script src="/resources/js/aos.js"></script>
    <script src="/resources/js/main.js"></script>
 
-   <!-- 서치 페이징 처리 스크립트 -->
+   <!-- 서치 페이징 처리 스크립트 사용X form의 action으로 변경함-->
    <script type="text/javascript">
       $(document).ready(function() {
          //.icon-search2")
-         $(document).on("click", ".icon-search2", function() {
+         /* $(document).on("click", ".icon-search2", function() {
             alert("검색창 테스트")
             window.location.href = "search.jsp"
          })
-         //  getPager()
+         //  getPager() */
       });
    </script>
+
 
 </body>
 </html>
 
-<%@ include file="../includes/footer.jsp"%>
+<%@ include file="includes/footer.jsp"%>

@@ -30,4 +30,5 @@ public class CommonController {
 	@GetMapping("/searchResult")
 	public void searchResult() {
 	}
+	
 }
