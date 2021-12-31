@@ -54,4 +54,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return membermapper.memberselect(cri);
 	}
+
+
+	@Override
+	public MemberVO idcheck(MemberVO member) {
+		// TODO Auto-generated method stub
+		return membermapper.idcheck(member);
+	}
 }

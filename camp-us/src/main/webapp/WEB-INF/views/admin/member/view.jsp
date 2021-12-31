@@ -17,27 +17,39 @@
 			<h2>회원가입</h2>
 			<br> <br> <input type="text" class="form-control py-4"
 				id="member_ID_subscribe" name="member_ID_subscribe" value="${member.userId}"
-				placeholder="아이디" disabled="disabled"> <input type="text"
+				placeholder="아이디" disabled="disabled"> 
+				
+				<input type="text"
 				class="form-control py-4" id="member_Email_subscribe" value="${member.email}"
 				name="member_Email_subscribe" placeholder="이메일" disabled="disabled">
 
 			<input type="text" class="form-control py-4"
 				id="member_Num_subscribe" name="member_Num_subscribe" value="${member.contact}"
-				placeholder="핸드폰 번호" disabled="disabled"> <input type="text"
+				placeholder="핸드폰 번호" disabled="disabled"> 
+				
+				<input type="text"
 				class="form-control py-4" id="member_NicName_subscribe"
 				name="member_NicName_subscribe" placeholder="닉네임" value="${member.nickname}"
-				disabled="disabled"> <input class="form-control py-4"
+				disabled="disabled"> 
+				
+				<input class="form-control py-4"
 				type="text" id="sample6_postcode" name="sample6_postcode" value="${member.addr1}"
-				placeholder="우편번호" disabled="disabled"> <input
+				placeholder="우편번호" disabled="disabled"> 
+				
+				<input
 				class="form-control py-4" type="button"
 				onclick="sample6_execDaumPostcode()" value="우편번호 찾기"
-				disabled="disabled"> <input class="form-control py-4"
+				disabled="disabled"> 
+				
+				<input class="form-control py-4"
 				type="text" id="sample6_address" name="sample6_address" value="${member.addr2}"
-				placeholder="주소" disabled="disabled"> <input
-				class="form-control py-4" type="text" id="sample6_detailAddress"
+				placeholder="주소" disabled="disabled"> 
+				
+				<input
+				class="form-control py-4" type="text" id="sample6_detailAddress" value="${member.addr3 }"
 				name="sample6_detailAddress" disabled="disabled" placeholder="상세주소">
 
-			<input class="form-control py-4" name="sample6_extraAddress"
+			<input class="form-control py-4" name="sample6_extraAddress" value="${member.addr4 }"
 				type="text" id="sample6_extraAddress" placeholder="참고항목"
 				disabled="disabled">
 
@@ -55,10 +67,10 @@
 				<br>
 				<!-- <input type="submit" class="btn btn-sm btn-primary form-control"
 							value="회원가입"> -->
-				<button id="join" class="btn btn-sm btn-primary form-control"
-					type="submit">가입하기</button>
-				<br> <a type="submit"
-					class="btn btn-sm btn-primary form-control" href="/" value="홈으로 이동">홈으로
+				<a type="submit" class="btn btn-warning" href="/admin/member/list" value="관리자 페이지">관리자페이지로 이동</a>
+				<br><p><p><p><p><p> 
+				<a type="submit"
+					class="btn btn-warning" href="/" value="홈으로 이동">홈으로
 					이동</a>
 		</div>
 	</div>

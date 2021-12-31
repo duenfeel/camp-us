@@ -34,6 +34,7 @@
 	<context:component-scan
 		base-package="kr.campus.controller" />
 
+
 	<security:global-method-security
 		pre-post-annotations="enabled" secured-annotations="enabled" />
 	<!-- 시큐리티와 관련된 어노테이션을 사용할 수 있도록 설정 -->

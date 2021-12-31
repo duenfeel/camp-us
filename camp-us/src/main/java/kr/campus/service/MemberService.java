@@ -11,4 +11,6 @@ public interface MemberService {
 	public MemberVO read(String userid);
 	
 	public List<MemberVO> memberselect(Criteria cri);
+	
+	public MemberVO idcheck(MemberVO member);
 }

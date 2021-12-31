@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,7 +36,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginPageGET() {
-		
 
 	}
 	
@@ -61,5 +62,15 @@ public class MemberController {
 		
 		
 	}
+	/// 아이디 중복확인
+		@PostMapping("/idCheck")
+		public ResponseEntity<String> idCheck(MemberVO member, Model model) {
+			MemberVO vo = memberservice.idcheck(member);
+			if (vo != null) {
+				return new ResponseEntity<String>("no", HttpStatus.OK);
+			} else
+				return new ResponseEntity<String>("yes", HttpStatus.OK);
+		}
+	//MemberVO
 	
 }

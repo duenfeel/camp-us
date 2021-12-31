@@ -45,6 +45,10 @@
 	</select>
 
 
+  <select id="idcheck" resultMap="memberMap">
+  Select * from campus_member Where userid=#{userId}
+  </select>
+
 	<sql id="criteria">
 		<trim prefix="(" suffix=")" prefixOverrides="OR">
 			<foreach item="type" collection="typeArr">

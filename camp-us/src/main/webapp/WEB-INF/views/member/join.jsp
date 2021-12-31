@@ -48,7 +48,9 @@
 					<h2>회원가입</h2>
 					<br> <br> 
 					<input type="text" class="form-control py-4"
-						id="member_ID_subscribe" name="member_ID_subscribe" placeholder="아이디">		
+						id="member_ID_subscribe" name="member_ID_subscribe" placeholder="아이디">	
+						<input type="hidden" id="hidCheck" value="n">	
+						<button id="idCheck" class="btn btn-sm btn-primary form-control">아이디 중복</button>
 					<input type="password" class="form-control py-4" id="member_PW_subscribe"
 						name="member_PW_subscribe" placeholder="비밀번호"> 
 						
@@ -71,7 +73,7 @@
 						<input class="form-control py-4"
 						type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호"  disabled="disabled">
 						
-					    <input class="form-control py-4" type="button"
+					    <input class="btn btn-sm btn-primary form-control" type="button"
 						onclick="sample6_execDaumPostcode()"  value="우편번호 찾기"> 
 						
 						<input class="form-control py-4" type="text" id="sample6_address" name="sample6_address"
@@ -192,11 +194,31 @@
 		$(document).ready(function(){
 			//회원가입 버튼(회원가입 기능 작동)
 			$("#join").click(function(e){
+				$(function(){
+					$('#member_PW_subscribe').ready(function(){
+						if($('#member_PW_subscribe').val() != $('#member_REPW_subscribe').val()){
+							if($('#member_REPW_subscribe').val()!=''){
+								alert("비밀번호가 일치하지 않습니다.");
+								$('#member_REPW_subscribe').val('');
+								$('#member_REPW_subscribe').focus();
+							}
+							return;
+						}
+					})
+				})
+				
+				
 				
 				e.preventDefault();
 				if($("#member_ID_subscribe").val() =="")
 				{
 					alert("아이디을 입력하여 주세요")
+					return ;
+				}
+				//hidCheck
+				if($("#hidCheck").val() !="yes")
+				{
+					alert("아이디중복확인을 입력하여 주세요")
 					return ;
 				}
 				if($("#member_PW_subscribe").val() =="")
@@ -277,7 +299,44 @@
                     }
                  });
 			})
+			
+			
+			  $("#idCheck").on(
+                      "click",
+                      function(e) {
+                         e.preventDefault();
+
+                         var params = {
+                        		 userId : $("#member_ID_subscribe").val()
+                         };
+
+                         $.ajax({
+                            type : "POST", // HTTP method type(GET, POST) 형식이다.
+                            url : "/member/idCheck", // 컨트롤러에서 대기중인 URL 주소이다.
+                            beforeSend : function(xhr) {
+                               xhr.setRequestHeader(
+                                     csrfHeaderName,
+                                     csrfTokenValue);
+                            },
+                            data : params, // Json 형식의 데이터이다.
+                            success : function(res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+                               if (res !== "no"){ //yes 면 o
+                                  alert("사용 가능한 아이디입니다");
+                                  $("#hidCheck").attr("value", "yes");
+                               }else {
+                                  alert("사용 불가능한 아이디입니다");
+                               }
+                               $("#hidCheck").val(res);
+                            },
+                            error : function(XMLHttpRequest,
+                                  textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                               alert("통신 실패.")
+                            }
+                         });
+                      });
 		})
+		
+		
 		
 		/* 아이디 a-z,0-9, 5자리부터15자리까지 */
 		/* var idReg = /^[a-za-z0-9]{5,15}$/;

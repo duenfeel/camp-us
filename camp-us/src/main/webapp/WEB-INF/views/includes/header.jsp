@@ -38,7 +38,7 @@
 						<div
 							class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
 							<div class="site-logo">
-								<a href="/common/main" class="js-logo-clone">CAMP-US</a>
+								<a href="/" class="js-logo-clone">CAMP-US</a>
 							</div>
 						</div>
 

@@ -10,8 +10,8 @@
     align-items: center;
 }
 </style>
-<a onclick="ExportToExcel()" id="Excel"><button class="btn btn-sm btn-primary form-control">엑셀저장</button></a>
-<p></p>
+<a onclick="ExportToExcel()" id="Excel"><button class="btn btn-warning">엑셀저장</button></a>
+<p></p><div class="col-lg-12">총 건수 :
 <select id="amount" name="amount">
 <option value="10">10</option>
 <option value="30">30</option>
@@ -19,8 +19,8 @@
 <option value="100">100</option>
 </select>
 <input type="hidden" name="pageNum" id="pageNum" value="1">
-<input type="hidden" id="cnt" name="cnt" value="10">
-<div class="col-lg-12">
+<input type="hidden" id="cnt" name="cnt" value="10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;분류 :
+
 	&nbsp;&nbsp;&nbsp;<select name="type" id="type">
 		<option value="T">아이디</option>
 		<option value="C">닉네임</option>
@@ -28,6 +28,7 @@
 		<option value="X">주소</option>
 	</select> &nbsp;&nbsp;&nbsp; <input type="text" id="keyword">
 	<button id="btnSearch" class="btn btn-warning">검색</button>
+	<a type="submit" class="btn btn-warning" href="/admin/member/list" value="이전">이전</a>
 
 </div>
 <table class="table table-bordered " id="dataTable" width="100%">
@@ -44,9 +45,16 @@
 
 <div class="row center" id="pager"></div>
 
+
 <script >
 var csrfHeaderName = "${_csrf.headerName}";
 var csrfTokenValue = "${_csrf.token}";
+var auth ='<c:out value="${auth}"></c:out>';
+//alert(String(auth).length)
+if(String(auth).length==0)
+{
+	window.location.href="/"	
+}
 function ExportToExcel() {
 	var htmltable = document.getElementById("dataTable");
 
@@ -67,7 +75,7 @@ function ExportToExcel() {
 				amount  : $("#amount").val()
 			}
 		
-		$
+		
 		$.ajax({
 			type : "POST", // HTTP method type(GET, POST) 형식이다.
 			url : "/admin/member/searchlist", // 컨트롤러에서 대기중인 URL 주소이다.
@@ -112,7 +120,7 @@ function ExportToExcel() {
 	{
 		window.location.href="/admin/member/view?userid="+userid
 		//alert(userid)
-	}
+	} 
 	
 	function getPager()
 	   {

@@ -13,6 +13,8 @@ public interface MemberMapper {
 	
 	public MemberVO read(String userid);
 
+	public MemberVO idcheck(MemberVO member);
 	
 	public List<MemberVO> memberselect(Criteria cri);
+
 }
