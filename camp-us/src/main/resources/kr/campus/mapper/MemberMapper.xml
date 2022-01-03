@@ -25,7 +25,7 @@
 
 
 	<insert id="memberJoin">
-		insert into campus_member values(#{userId},
+		insert into tbl_user values(#{userId},
 		#{password}, #{nickname},
 		#{email},#{Addr1}, #{Addr2},
 		#{Addr3},
@@ -33,12 +33,26 @@
 		)
 
 	</insert>
+	
+	
+	<update id="memberUpdate">
+	update tbl_user set 
+	password =#{password},
+	nickname=#{nickname},
+	email =#{email},
+	Addr1=#{Addr1}, 
+	Addr2= #{Addr2},
+	Addr3=#{Addr3},
+	Addr4=#{Addr4},
+	contact =#{contact}
+	Where userId = #{userId}
+	</update>
 
 	<select id="read" resultMap="memberMap">
 		select mem.*,auth.auth
 		from
-		campus_member mem left outer join
-		campus_memberAuth auth on
+		tbl_user mem left outer join
+		tbl_memberauth auth on
 		mem.userid=auth.userid
 		where mem.userid=#{userId}
 		order by auth.auth DESC
@@ -46,7 +60,7 @@
 
 
   <select id="idcheck" resultMap="memberMap">
-  Select * from campus_member Where userid=#{userId}
+  Select * from tbl_user Where userid=#{userId}
   </select>
 
 	<sql id="criteria">
@@ -79,7 +93,7 @@
 		from
 		(
 		SELECT
-		/*+campus_member(tbl_member pk_member) */
+		/*+tbl_user(tbl_member pk_member) */
 		rownum rn,
 		userid,
 		password,
@@ -90,11 +104,11 @@
 		addr3,
 		addr4,
 		contact
-		,(Select count(1) from campus_member Where 1=1 and
+		,(Select count(1) from tbl_user Where 1=1 and
 		<include refid="criteria" /> 
 		) as cnt
 		FROM
-		campus_member
+		tbl_user
 		Where
 		<![CDATA[
 		rownum <= #{pageNum} * #{amount}

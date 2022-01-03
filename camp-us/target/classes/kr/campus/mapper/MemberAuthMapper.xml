@@ -5,7 +5,7 @@
 <mapper namespace="kr.campus.mapper.MemberAuthMapper">
 	<insert id="add">
 		INSERT INTO
-		CAMPUS_MEMBERAuth(
+		tbl_memberauth(
 		userid,
 		Auth
 		)
@@ -16,7 +16,7 @@
 	</insert>
 	
 	<delete id="delete">
-		delete CAMPUS_MEMBERAuth Where userid=#{userId}
+		delete tbl_memberauth Where userid=#{userId}
 	</delete>
 
 </mapper>

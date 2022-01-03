@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.campus.mapper.ItemMapper">
+
+	<select id="itemList" resultType="kr.campus.domain.ItemVO">
+		<![CDATA[
+			select * from 
+			(
+			select /*+INDEX_DESC(tbl_items) */  
+			rownum rn, itemcode, itemname, price, quantity, ratings, category, purchases, regdate, thumbnail 
+			from tbl_items
+			where category like '%'||#{category}||'%'
+			and rownum <= #{pageNum} * #{amount} order by regdate desc
+			)
+			where rn > (#{pageNum}-1) * #{amount} 
+		]]>
+	</select>
+	
+	<select id="recommendedItems" resultType="kr.campus.domain.ItemVO">
+		<![CDATA[
+			select * from
+			(
+			select
+            itemcode, itemname, price, quantity, ratings, category, purchases, regdate, thumbnail 
+			from tbl_items
+			where quantity > 0 and purchases is not null
+			order by purchases desc
+			)
+			where rownum <= 6
+		]]>
+	</select>
+	
+	<select id="readItem" resultType="kr.campus.domain.ItemVO">
+		select * from tbl_items where itemCode = #{itemCode}
+	</select>
+	
+	
+<!-- 	<select id="newList" resultType="kr.campus.domain.ItemVO">
+		<![CDATA[
+			select * from 
+			(
+			select /*+INDEX_DESC(tbl_items) */  
+			rownum rn, itemcode, itemname, price, quantity, ratings, category, purchases, regdate, thumbnail 
+			from tbl_items
+			where rownum <= #{pageNum} * #{amount} order by regdate desc
+			)
+			where rn > (#{pageNum}-1) * #{amount} 
+		]]>
+	</select> -->
+	
+	
+	
+	<select id="getTotal" resultType="int">
+		select count(itemCode)
+		from tbl_items 
+		where category like '%'||#{category}||'%'
+	</select>
+	
+</mapper>

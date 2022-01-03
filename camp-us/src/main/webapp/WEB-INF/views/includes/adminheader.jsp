@@ -50,8 +50,13 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="/admin/member/list">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-database"></i></div>
                                 회원관리
+                            </a>
+                            
+                            <a class="nav-link" href="/admin/shop/registItem">
+                            <div class="sb-nav-link-icon"><i class="far fa-plus-square"></i></div>
+                            상품등록
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

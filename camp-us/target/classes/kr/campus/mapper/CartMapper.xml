@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.campus.mapper.CartMapper">
+	
+	<!-- 장바구니 담기 버튼 클릭시 실행되는 쿼리문 -->
+	<insert id="insert">
+		insert into tbl_cart (cartid, userid, itemcode, quantity)
+		values (seq_cart.nextval, #{userID}, #{itemCode}, #{quantity})
+	</insert>
+	
+	<select id="list" resultType="kr.campus.domain.CartListVO">
+		select row_number() over(order by cart.cartID desc) as num, 
+		cart.cartID, cart.userID, cart.itemCode, cart.quantity, cart.addDate,
+		item.itemName, item.price, item.thumbnail
+		from tbl_cart cart inner join tbl_item item
+		on cart.itemCode = item.itemCode
+		where cart.userID = #{userID}
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_cart
+		where itemCode = #{itemCode} and userID = #{userID}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete tbl_cart where userID = #{userID}
+	</delete>
+	
+</mapper>

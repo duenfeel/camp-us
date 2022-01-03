@@ -32,4 +32,8 @@ public class UserController {
 	@GetMapping("/wishlist")
 	public void wishlist() {
 	}
+	
+	@GetMapping("/order")
+	public void order() {
+	}
 }

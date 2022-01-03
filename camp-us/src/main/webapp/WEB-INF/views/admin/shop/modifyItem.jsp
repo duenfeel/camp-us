@@ -4,7 +4,7 @@
 <!-- jstl core 쓸때 태그에 c 로 표시. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- jstl fmt 쓸때 위와 같음. fmt : formatter 형식 맞춰서 표시 -->
-<%@ include file="../includes/header.jsp"%>
+<%@ include file="../../includes/header.jsp"%>
 
 
 <!DOCTYPE html>
@@ -47,17 +47,21 @@
 									<div class="form-group row">
 										<div class="col-md-6">
 											<label for="a-classify" class="text-black">상품분류</label> <input
-												type="text" class="form-control" id="a-classify" name="a-classify" >
+												type="text" class="form-control" id="a-classify" name="a-classify" readonly>
 										</div>
+										<div class="col-md-6">
+											<label for="a-code" class="text-black">상품코드</label> <input
+												type="text" class="form-control" id="a-code" name="a-code" readonly>
+										</div>
+									</div>
+									<div class="form-group row">
 										<div class="col-md-6">
 											<label for="a-price" class="text-black">단가</label> <input
 												type="text" class="form-control" id="a-price" name="a-price">
 										</div>
-									</div>
-									<div class="form-group row">
-										<div class="col-md-12">
+										<div class="col-md-6">
 											<label for="a-stock" class="text-black">재고</label> <input
-												type="text" class="form-control" id="a-stock" name="a-stock"
+												type="number" class="form-control" id="a-stock" name="a-stock"
 												placeholder="">
 										</div>
 									</div>
@@ -106,7 +110,6 @@
 	</div>
 
 
-
 	<script src="/resources/js/jquery-3.3.1.min.js"></script>
   <script src="/resources/js/jquery-ui.js"></script>
   <script src="/resources/js/popper.min.js"></script>
@@ -120,4 +123,4 @@
   </body>
 </html>
 
-<%@ include file="../includes/footer.jsp"%>
+<%@ include file="../../includes/footer.jsp"%>

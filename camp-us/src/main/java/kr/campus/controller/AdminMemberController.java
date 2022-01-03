@@ -39,12 +39,46 @@ public class AdminMemberController {
 		String userid = "";
 		try {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			userid = userDetails.getUsername();// 시큐리티에서는 username이 id
+			userid = userDetails.getUsername();// �떆�걧由ы떚�뿉�꽌�뒗 username�씠 id
 
-			List<String> roleNames = new ArrayList<String>(); // 권한 관리목록을 저장 할 객체
+			List<String> roleNames = new ArrayList<String>(); // 沅뚰븳 愿�由щぉ濡앹쓣 ���옣 �븷 媛앹껜
 			MemberVO mvo = service.read(userid);
 			if (mvo.getAuthList() != null) {
 				log.info("datalist");
+//				roleNames.add(m);
+				for (int i = 0; i < mvo.getAuthList().size(); i++) {
+					roleNames.add(mvo.getAuthList().get(i).getAuth());
+//		w
+				}
+
+			}
+
+			if (roleNames.contains("ROLE_ADMIN")) {
+				model.addAttribute("auth", "ROLE_ADMIN");
+			}
+			///
+		} catch (Exception e) {
+			log.info("error:"+e.getMessage());
+		} finally {
+			if (userid != null) {
+
+				///
+			}
+		}
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@GetMapping("registitem")
+	public void registitem(Authentication authentication, Model model) {
+		String userid = "";
+		try {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			userid = userDetails.getUsername();// �떆�걧由ы떚�뿉�꽌�뒗 username�씠 id
+
+			List<String> roleNames = new ArrayList<String>(); // 沅뚰븳 愿�由щぉ濡앹쓣 ���옣 �븷 媛앹껜
+			MemberVO mvo = service.read(userid);
+			if (mvo.getAuthList() != null) {
+				log.info("registitem");
 //				roleNames.add(m);
 				for (int i = 0; i < mvo.getAuthList().size(); i++) {
 					roleNames.add(mvo.getAuthList().get(i).getAuth());
@@ -91,7 +125,7 @@ public class AdminMemberController {
 			log.info("권한부여");
 			authservice.add(vo);
 		} else {
-			log.info("권한삭제");
+			log.info("권한부여");
 			authservice.delete(vo);
 		}
 		return new ResponseEntity<String>("succuess", HttpStatus.OK);

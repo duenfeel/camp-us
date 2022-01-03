@@ -61,4 +61,18 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return membermapper.idcheck(member);
 	}
+
+	/*
+	 * BCryptPasswordEncoder 객체는 복호화 알고리즘이 없어 ..
+	 * 복호화을 못해  어떻게 ??
+	 * 텍스트박스 받아서 그걸 암호화 시켜 비밀번호 암호화와 같은지 여부 같다면 회원수정
+	 * 아니면 다른거잔아 메세지출력 오류 .비밀번호가 다릅니다
+	 * */
+
+	@Override
+	public int memberUpdate(MemberVO member) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		 member.setPassword(passwordEncoder.encode(member.getPassword()));
+		return membermapper.memberUpdate(member);
+	}
 }

@@ -96,7 +96,7 @@
 						<!-- <input type="submit" class="btn btn-sm btn-primary form-control"
 							value="회원가입"> -->
 						<button id="join" class="btn btn-sm btn-primary form-control"
-							type="submit">가입하기</button>
+							type="button">가입하기</button>
 						<br> <a type="submit"
 							class="btn btn-sm btn-primary form-control" href="/"
 							value="홈으로 이동">홈으로 이동</a>
@@ -191,25 +191,57 @@
 					}).open();
 		}
 
-		$(document).ready(function(){
-			//회원가입 버튼(회원가입 기능 작동)
-			$("#join").click(function(e){
-				$(function(){
-					$('#member_PW_subscribe').ready(function(){
-						if($('#member_PW_subscribe').val() != $('#member_REPW_subscribe').val()){
-							if($('#member_REPW_subscribe').val()!=''){
-								alert("비밀번호가 일치하지 않습니다.");
-								$('#member_REPW_subscribe').val('');
-								$('#member_REPW_subscribe').focus();
-							}
-							return;
-						}
-					})
-				})
-				
-				
-				
-				e.preventDefault();
+		// html loading 
+		$(document).ready(function(){ 
+			
+		$(document).on("click","#idCheck",function(){
+			if($("#member_ID_subscribe").val() =="")
+			{
+				alert("아이디을 입력하여 주세요")
+				return ;
+			}
+            var params = {
+           		 userId : $("#member_ID_subscribe").val()
+            };
+
+            $.ajax({
+               type : "POST", // HTTP method type(GET, POST) 형식이다.
+               url : "/member/idCheck", // 컨트롤러에서 대기중인 URL 주소이다.
+               beforeSend : function(xhr) {
+                  xhr.setRequestHeader(
+                        csrfHeaderName,
+                        csrfTokenValue);
+               },
+               data : params, // Json 형식의 데이터이다.
+               success : function(res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+                  if (res !== "no"){ //yes 면 o
+                     alert("사용 가능한 아이디입니다");
+                     $("#hidCheck").attr("value", "yes");
+                  }else {
+                     alert("사용 불가능한 아이디입니다");
+                  }
+                  $("#hidCheck").val(res);
+               },
+               error : function(XMLHttpRequest,
+                     textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                  alert("통신 실패.")
+               }
+            });
+		})
+			 
+			 /// version up 버전업이 되면서 못찾는 경우가 발생함. 밑에처럼 찾아줘야함. 
+			 // document 의 현재 문서의 click 이벤트를 찾고 #join 이라는 태그를 찾는다.
+			 // 이렇게 찾으면 동적으로 테그가 추가되든 안되든 잘 찾아줌.
+		$(document).on("click","#join",function(e){
+			e.preventDefault();// 이벤트를 취소시키는 명령어
+			 if($('#member_PW_subscribe').val() != $('#member_REPW_subscribe').val()){
+					if($('#member_REPW_subscribe').val()!=''){
+						alert("비밀번호가 일치하지 않습니다.");
+						$('#member_REPW_subscribe').val('');
+						$('#member_REPW_subscribe').focus();	
+						return ;
+					}					
+				}	
 				if($("#member_ID_subscribe").val() =="")
 				{
 					alert("아이디을 입력하여 주세요")
@@ -267,7 +299,7 @@
 						 Addr3 	  : $("#sample6_detailAddress").val()	, 
 						 Addr4 	  : $("#sample6_extraAddress").val()	, 
 						 contact  : $("#member_Num_subscribe").val()
-                      };
+                   };
 				 
 			
 				/*  $("#join_form").attr("action", "/member/join");
@@ -276,65 +308,32 @@
 				alert("회원가입이 안료되었습니다");  */
 				
 				 $
-                 .ajax({
-                    type : 'POST',
-                    url : '/member/join',
-                    data : params,
-                    beforeSend : function(
-                          xhr) {
-                         xhr
-                           .setRequestHeader(
-                                    csrfHeaderName,
-                                   csrfTokenValue); 
-                     }, 
-                    success : function(res) {
-                       alert("회원가입이 완료되었습니다")
-                       window.location.href = "/member/login" //로그인창으로
-                    },
-                    error : function(
-                          XMLHttpRequest,
-                          textStatus,
-                          errorThrown) {
-                       alert(errorThrown)
-                    }
-                 });
-			})
-			
-			
-			  $("#idCheck").on(
-                      "click",
-                      function(e) {
-                         e.preventDefault();
-
-                         var params = {
-                        		 userId : $("#member_ID_subscribe").val()
-                         };
-
-                         $.ajax({
-                            type : "POST", // HTTP method type(GET, POST) 형식이다.
-                            url : "/member/idCheck", // 컨트롤러에서 대기중인 URL 주소이다.
-                            beforeSend : function(xhr) {
-                               xhr.setRequestHeader(
-                                     csrfHeaderName,
-                                     csrfTokenValue);
-                            },
-                            data : params, // Json 형식의 데이터이다.
-                            success : function(res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-                               if (res !== "no"){ //yes 면 o
-                                  alert("사용 가능한 아이디입니다");
-                                  $("#hidCheck").attr("value", "yes");
-                               }else {
-                                  alert("사용 불가능한 아이디입니다");
-                               }
-                               $("#hidCheck").val(res);
-                            },
-                            error : function(XMLHttpRequest,
-                                  textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-                               alert("통신 실패.")
-                            }
-                         });
-                      });
-		})
+              .ajax({
+                 type : 'POST',
+                 url : '/member/join',
+                 data : params,
+                 beforeSend : function(
+                       xhr) {
+                      xhr
+                        .setRequestHeader(
+                                 csrfHeaderName,
+                                csrfTokenValue); 
+                  }, 
+                 success : function(res) {
+                    alert("회원가입이 완료되었습니다")
+                    window.location.href = "/member/login" //로그인창으로
+                 },
+                 error : function(
+                       XMLHttpRequest,
+                       textStatus,
+                       errorThrown) {
+                    alert(errorThrown)
+                 }
+              });
+		});
+			 
+			 
+		});
 		
 		
 		

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.campus.mapper.ReviewMapper">
+	
+	<insert id="insert">
+		insert into tbl_review (reviewno, itemcode, userid, content)
+		values (seq_review.nextval, #{itemCode}, #{userID}, #{content})
+	</insert>
+	
+	<select id="read" resultType="kr.campus.domain.ReviewVO">
+		select * from tbl_review where reviewno = #{reviewNo}
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_review where reviewNo = #{reviewNo}
+	</delete>
+	
+	<update id="update">
+		update tbl_review set content = #{content}
+		where reviewNo = #{reviewNo}
+	</update>
+	
+	<select id="reviewList" resultType="kr.campus.domain.ReviewVO">
+		select reviewNo, itemcode, userid, content, reviewdate 
+		from tbl_review
+		where itemCode = #{itemCode}
+		order by reviewNo asc
+	</select>
+	
+</mapper>
